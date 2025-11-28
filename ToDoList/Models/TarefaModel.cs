@@ -2,7 +2,7 @@ namespace ToDoList.Models;
 
 public class TarefaModel
 {
-    public TarefaModel(string nome, string descricao, bool concluida)
+    public TarefaModel(string nome, string descricao, bool concluida = false)
     {
         Id = Guid.NewGuid();
         DataCriação = DateTime.Now;
