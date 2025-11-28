@@ -31,7 +31,7 @@ namespace ToDoList.Controllers
         [HttpGet]
         [Route("{id}")]
 
-        public ActionResult<TarefaModel> BuscarTarefa(Guid id)
+        public ActionResult<TarefaModel> BuscarTarefaPorId(Guid id)
         {   
             var tarefa = _context.Tarefas.Find(id);
 
@@ -42,6 +42,8 @@ namespace ToDoList.Controllers
 
             return Ok(tarefa);
         }
+
+        
     }
 
     
