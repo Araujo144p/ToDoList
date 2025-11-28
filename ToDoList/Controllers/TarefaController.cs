@@ -25,6 +25,23 @@ namespace ToDoList.Controllers
 
             return Ok(tarefas);
         }
+
+
+
+        [HttpGet]
+        [Route("{id}")]
+
+        public ActionResult<TarefaModel> BuscarTarefa(Guid id)
+        {   
+            var tarefa = _context.Tarefas.Find(id);
+
+            if(tarefa == null)
+            {
+                return NotFound("Registro não localizado!");
+            }
+
+            return Ok(tarefa);
+        }
     }
 
     
