@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data;
+using ToDoList.Models;
 
 namespace ToDoList.Controllers
 {
@@ -14,5 +15,17 @@ namespace ToDoList.Controllers
         {
             _context = context;
         }
+
+
+
+        [HttpGet]
+        public ActionResult<List<TarefaModel>> BuscarTarefas()
+        {
+            var tarefas = _context.Tarefas.ToList();
+
+            return Ok(tarefas);
+        }
     }
+
+    
 }
