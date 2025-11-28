@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data;
+using ToDoList.DTOs;
 using ToDoList.Models;
 
 namespace ToDoList.Controllers
@@ -45,23 +46,25 @@ namespace ToDoList.Controllers
 
         [HttpPost]
 
-        public ActionResult<TarefaModel> CriarTarefa(TarefaModel tarefaModel)
+        public ActionResult<TarefaModel> CriarTarefa(TarefaCreateDto tarefaDto)
         {
-            if(tarefaModel == null)
+            if(tarefaDto == null)
             {
                 return BadRequest("Ocorreu um erro na solicitacao");
             }
 
-            _context.Tarefas.Add(tarefaModel);
+            var tarefa = new TarefaModel(tarefaDto.Nome, tarefaDto.Descrição);
+
+            _context.Tarefas.Add(tarefa);
             _context.SaveChanges();
 
-            return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefaModel.Id}, tarefaModel);
+            return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefa.Id}, tarefa );
         }
 
         [HttpPut]
         [Route("{id}")]
 
-        public ActionResult<TarefaModel> AlterarTarefa(TarefaModel tarefaModel, Guid id)
+        public ActionResult<TarefaModel> AlterarTarefa(TarefaUpdateDto tarefaDto, Guid id)
         {
             var tarefa = _context.Tarefas.Find(id);
 
@@ -70,9 +73,9 @@ namespace ToDoList.Controllers
                 return BadRequest("Registro não localizado!");
             }
 
-            tarefa.Nome = tarefaModel.Nome;
-            tarefa.Descricao = tarefaModel.Descricao;
-            tarefa.Concluida = tarefaModel.Concluida;
+            tarefa.Nome = tarefaDto.Nome;
+            tarefa.Descricao = tarefaDto.Descricao;
+            tarefa.Concluida = tarefaDto.Concluida;
 
             _context.Tarefas.Update(tarefa);
             _context.SaveChanges();
