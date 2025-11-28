@@ -58,6 +58,28 @@ namespace ToDoList.Controllers
             return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefaModel.Id}, tarefaModel);
         }
 
+        [HttpPut]
+        [Route("{id}")]
+
+        public ActionResult<TarefaModel> AlterarTarefa(TarefaModel tarefaModel, Guid id)
+        {
+            var tarefa = _context.Tarefas.Find(id);
+
+            if(tarefa == null)
+            {
+                return BadRequest("Registro não localizado!");
+            }
+
+            tarefa.Nome = tarefaModel.Nome;
+            tarefa.Descricao = tarefaModel.Descricao;
+            tarefa.Concluida = tarefaModel.Concluida;
+
+            _context.Tarefas.Update(tarefa);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
         
     }
 
