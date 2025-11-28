@@ -43,6 +43,21 @@ namespace ToDoList.Controllers
             return Ok(tarefa);
         }
 
+        [HttpPost]
+
+        public ActionResult<TarefaModel> CriarTarefa(TarefaModel tarefaModel)
+        {
+            if(tarefaModel == null)
+            {
+                return BadRequest("Ocorreu um erro na solicitacao");
+            }
+
+            _context.Tarefas.Add(tarefaModel);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefaModel.Id}, tarefaModel);
+        }
+
         
     }
 
