@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\ToDoList\\ToDoList.csproj": {}
+    "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\todolist\\ToDoList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\ToDoList\\ToDoList.csproj": {
+    "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\todolist\\ToDoList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\ToDoList\\ToDoList.csproj",
+        "projectUniqueName": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\todolist\\ToDoList.csproj",
         "projectName": "ToDoList",
-        "projectPath": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\ToDoList\\ToDoList.csproj",
+        "projectPath": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\todolist\\ToDoList.csproj",
         "packagesPath": "C:\\Users\\SAMSUNG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\ToDoList\\obj\\",
+        "outputPath": "C:\\Users\\SAMSUNG\\Documents\\desafios\\ToDoList\\todolist\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
