@@ -59,7 +59,9 @@ public class TarefaModel
 | PUT    | `/tarefa/{id}` | Atualizar tarefa existente |
 | DELETE | `/tarefa/{id}` | Remover tarefa             |
 
-Os endpoints podem ser visualizados via Scalar.
+📌 Documentação interativa (Scalar):
+Após rodar o projeto, acesse:
+http://localhost:5094/scalar/v1 (ou a porta gerada na execução)
 
 ## 🛠️ Como executar o projeto
 🔧 Pré-requisitos
@@ -74,24 +76,34 @@ Abra o arquivo appsettings.json e configure a Connection String:
 
 ```
 "ConnectionStrings": {
-  "DefaultConnection": "server=DESKTOP-PLOL2QK\\SQLEXPRESS; database=Tarefas; trusted_connection=true; trustservercertificate=true"
+  "DefaultConnection": "server=SEU_SERVIDOR; database=Tarefas; trusted_connection=true; trustservercertificate=true"
 }
 ```
 ## ▶️ Executando o projeto
 
 Usando o terminal:
 ```
+dotnet restore
 dotnet ef database update   
 dotnet run
 ```
 
+## 🧪 Rodando os testes unitários
+
+O projeto contém testes com xUnit.
+```
+dotnet test
+```
+
 ## 📦 Dependências para rodar a API
 
-| Pacote                                  | Função                     |
-| --------------------------------------- | -------------------------- |
-| Microsoft.EntityFrameworkCore           | ORM                        |
-| Microsoft.EntityFrameworkCore.SqlServer | Provider SQL Server        |
-| Microsoft.EntityFrameworkCore.Design    | Suporte a Migrations       |
-| Microsoft.EntityFrameworkCore.Tools     | Comandos CLI (`dotnet ef`) |
-| Scalar.AspNetCore                       | Documentação da API        |
+| Pacote                                  | Finalidade                |
+| --------------------------------------- | ------------------------- |
+| Microsoft.EntityFrameworkCore           | ORM                       |
+| Microsoft.EntityFrameworkCore.SqlServer | Provider SQL Server       |
+| Microsoft.EntityFrameworkCore.Design    | Migrations                |
+| Microsoft.EntityFrameworkCore.Tools     | CLI `dotnet ef`           |
+| Scalar.AspNetCore                       | Documentação              |
+| xUnit                                   | Testes unitários          |
+
 
