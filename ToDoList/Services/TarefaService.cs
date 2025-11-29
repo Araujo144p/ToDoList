@@ -43,6 +43,10 @@ namespace ToDoList.Services
             }
 
             var tarefa = new TarefaModel(tarefaDto.Nome, tarefaDto.Descricao);
+
+            _context.Tarefas.Add(tarefa);
+            _context.SaveChanges();
+
             return tarefa;
         }
 
@@ -64,6 +68,9 @@ namespace ToDoList.Services
 
             if (tarefaUpdateDto.Concluida  != null)
                 tarefa.Concluida = tarefaUpdateDto.Concluida.Value;
+
+            _context.Tarefas.Update(tarefa);
+            _context.SaveChanges();
 
             return tarefa;
         }

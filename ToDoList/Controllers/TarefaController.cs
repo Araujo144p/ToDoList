@@ -12,11 +12,9 @@ namespace ToDoList.Controllers
 
     public class TarefaController: ControllerBase
     {
-        private readonly TarefaDbContext _context;
         private readonly TarefaService _tarefaService;
-        public TarefaController(TarefaDbContext context, TarefaService tarefaService)
+        public TarefaController(TarefaService tarefaService)
         {
-            _context = context;
             _tarefaService = tarefaService;
         }
 
@@ -53,10 +51,7 @@ namespace ToDoList.Controllers
             if(tarefa == null)
             {
                 return BadRequest("Ocorreu um erro na solicitacao");
-            }
-
-            _context.Tarefas.Add(tarefa);
-            _context.SaveChanges();
+            } 
 
             return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefa.Id}, tarefa );
         }
@@ -73,9 +68,6 @@ namespace ToDoList.Controllers
             {
                 return BadRequest("Registro não localizado!");
             }
-
-            _context.Tarefas.Update(tarefa);
-            _context.SaveChanges();
 
             return NoContent();
         }
