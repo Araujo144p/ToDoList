@@ -12,6 +12,7 @@ namespace ToDoList.Services
             _context = context;
         }
 
+        // Logica do endpoint GET - Buscar Tarefas
         public List<TarefaModel> BuscarTarefas()
         {
             return _context.Tarefas.ToList();
