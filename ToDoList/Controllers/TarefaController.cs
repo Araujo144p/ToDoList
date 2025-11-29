@@ -30,24 +30,23 @@ namespace ToDoList.Controllers
         }
 
 
-
+        // Endpoint GET - Buscar Tarefa por id
         [HttpGet]
         [Route("{id}")]
-
         public ActionResult<TarefaModel> BuscarTarefaPorId(Guid id)
         {   
-            var tarefa = _context.Tarefas.Find(id);
+            var tarefa = _tarefaService.BuscarTarefaPorId(id);
 
             if(tarefa == null)
             {
-                return NotFound("Registro não localizado!");
+                return BadRequest("Registro nao localizado!");
             }
 
             return Ok(tarefa);
         }
 
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult<TarefaModel> CriarTarefa(TarefaCreateDto tarefaDto)
         {
             if(tarefaDto == null)

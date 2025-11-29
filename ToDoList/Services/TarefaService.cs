@@ -17,5 +17,19 @@ namespace ToDoList.Services
         {
             return _context.Tarefas.ToList();
         }
+
+
+        // Logica do endpoint GET - Buscar Tarefas por id
+        public TarefaModel? BuscarTarefaPorId(Guid id)
+        {
+            var tarefa = _context.Tarefas.Find(id);
+
+            if (tarefa == null)
+            {
+                return null;
+            }
+
+            return tarefa;
+        }
     }
 }
