@@ -7,6 +7,6 @@ namespace ToDoList.DTOs
         [Required]
         [MinLength(3)]
         public string Nome { get; set; } = String.Empty;
-        public string Descrição { get; set; } = String.Empty;
+        public string Descricao { get; set; } = String.Empty;
     }
 }

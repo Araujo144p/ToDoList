@@ -49,12 +49,11 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult<TarefaModel> CriarTarefa(TarefaCreateDto tarefaDto)
         {
-            if(tarefaDto == null)
+            var tarefa = _tarefaService.CriarTarefa(tarefaDto);
+            if(tarefa == null)
             {
                 return BadRequest("Ocorreu um erro na solicitacao");
             }
-
-            var tarefa = new TarefaModel(tarefaDto.Nome, tarefaDto.Descrição);
 
             _context.Tarefas.Add(tarefa);
             _context.SaveChanges();

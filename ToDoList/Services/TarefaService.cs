@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data;
+using ToDoList.DTOs;
 using ToDoList.Models;
 
 namespace ToDoList.Services
@@ -29,6 +31,17 @@ namespace ToDoList.Services
                 return null;
             }
 
+            return tarefa;
+        }
+
+        public TarefaModel? CriarTarefa(TarefaCreateDto tarefaDto)
+        {
+            if(tarefaDto == null)
+            {
+                return null;
+            }
+
+            var tarefa = new TarefaModel(tarefaDto.Nome, tarefaDto.Descricao);
             return tarefa;
         }
     }
