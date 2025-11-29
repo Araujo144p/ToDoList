@@ -61,21 +61,18 @@ namespace ToDoList.Controllers
             return CreatedAtAction(nameof(BuscarTarefaPorId), new {id = tarefa.Id}, tarefa );
         }
 
+
+        // EndPoint PUT - ALterar Tarefa
         [HttpPut]
         [Route("{id}")]
-
         public ActionResult<TarefaModel> AlterarTarefa(TarefaUpdateDto tarefaDto, Guid id)
         {
-            var tarefa = _context.Tarefas.Find(id);
+            var tarefa = _tarefaService.AlterarTarefa(tarefaDto, id);
 
             if(tarefa == null)
             {
                 return BadRequest("Registro não localizado!");
             }
-
-            tarefa.Nome = tarefaDto.Nome;
-            tarefa.Descricao = tarefaDto.Descricao;
-            tarefa.Concluida = tarefaDto.Concluida;
 
             _context.Tarefas.Update(tarefa);
             _context.SaveChanges();

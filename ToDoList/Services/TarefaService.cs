@@ -37,12 +37,34 @@ namespace ToDoList.Services
         // Logica do endpoint POST - Criar Tarefa
         public TarefaModel? CriarTarefa(TarefaCreateDto tarefaDto)
         {
-            if(tarefaDto == null)
+            if (tarefaDto == null)
             {
                 return null;
             }
 
             var tarefa = new TarefaModel(tarefaDto.Nome, tarefaDto.Descricao);
+            return tarefa;
+        }
+
+        // Logica do endpoint PUT - Alterar Tarefa
+        public TarefaModel? AlterarTarefa(TarefaUpdateDto tarefaUpdateDto, Guid id)
+        {
+            var tarefa = _context.Tarefas.Find(id);
+
+            if (tarefa == null)
+            {
+                return null;
+            }
+
+            if (!string.IsNullOrWhiteSpace(tarefaUpdateDto.Nome))
+                tarefa.Nome = tarefaUpdateDto.Nome;
+
+            if (!string.IsNullOrWhiteSpace(tarefaUpdateDto.Descricao))
+                tarefa.Descricao = tarefaUpdateDto.Descricao;
+
+            if (tarefaUpdateDto.Concluida  != null)
+                tarefa.Concluida = tarefaUpdateDto.Concluida.Value;
+
             return tarefa;
         }
     }
