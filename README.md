@@ -61,7 +61,7 @@ public class TarefaModel
 
 📌 Documentação interativa (Scalar):
 Após rodar o projeto, acesse:
-http://localhost:5094/scalar/v1 (ou a porta gerada na execução)
+http://localhost:5270/scalar/v1 (ou a porta gerada na execução)
 
 ## 🛠️ Como executar o projeto
 🔧 Pré-requisitos
@@ -84,7 +84,7 @@ Abra o arquivo appsettings.json e configure a Connection String:
 Usando o terminal:
 ```
 dotnet restore
-dotnet ef database update   
+dotnet ef database update  \\ entrar na pasta principal primeiro
 dotnet run
 ```
 
