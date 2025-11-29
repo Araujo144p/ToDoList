@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data;
 using ToDoList.DTOs;
 using ToDoList.Models;
+using ToDoList.Services;
 
 namespace ToDoList.Controllers
 {
@@ -12,18 +13,19 @@ namespace ToDoList.Controllers
     public class TarefaController: ControllerBase
     {
         private readonly TarefaDbContext _context;
-        public TarefaController(TarefaDbContext context)
+        private readonly TarefaService _tarefaService;
+        public TarefaController(TarefaDbContext context, TarefaService tarefaService)
         {
             _context = context;
+            _tarefaService = tarefaService;
         }
 
 
-
+        // Endpoint GET - Buscar Tarefas
         [HttpGet]
         public ActionResult<List<TarefaModel>> BuscarTarefas()
         {
-            var tarefas = _context.Tarefas.ToList();
-
+            var tarefas = _tarefaService.BuscarTarefas();
             return Ok(tarefas);
         }
 
