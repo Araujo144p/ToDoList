@@ -80,20 +80,17 @@ namespace ToDoList.Controllers
             return NoContent();
         }
 
+        // Endpoint Delete - Deletar Tarefa
         [HttpDelete]
         [Route("{id}")]
-
         public ActionResult<TarefaModel> DeletarTarefa( Guid id)
         {
-            var tarefa = _context.Tarefas.Find(id);
+            var tarefa = _tarefaService.DeletarTarefa(id);
 
             if(tarefa == null)
             {
                 return BadRequest("Registro não localizado!");
             }
-
-            _context.Tarefas.Remove(tarefa);
-            _context.SaveChanges();
 
             return NoContent();
         }

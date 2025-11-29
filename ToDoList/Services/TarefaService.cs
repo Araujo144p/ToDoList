@@ -67,5 +67,20 @@ namespace ToDoList.Services
 
             return tarefa;
         }
+
+        public TarefaModel? DeletarTarefa(Guid id)
+        {
+            var tarefa = _context.Tarefas.Find(id);
+
+            if(tarefa == null)
+            {
+                return null;
+            }
+
+            _context.Tarefas.Remove(tarefa);
+            _context.SaveChanges();
+
+            return tarefa;
+        }
     }
 }
